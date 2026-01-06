@@ -22,7 +22,7 @@ public class ProductDaoImpl implements ProductDao{
         Statement stmt = conn.createStatement();
 
         final String sql = """
-                 SELproduct.getId(1, )ECT * FROM products
+                 SELECT * FROM products
                  """;
 
         ResultSet rs = stmt.executeQuery(sql);
@@ -70,12 +70,12 @@ public class ProductDaoImpl implements ProductDao{
         // Create sql
         final String sql = """
                 DELETE FROM products
-                WHERE id = ?
+                WHERE code = ?
                 """;
         // Create prepare statement
         PreparedStatement pstmt = conn.prepareStatement(sql);
         // SET
-        pstmt.setInt(1, product.getId());
+        pstmt.setString(1, product.getCode());
 
         // EXECUTE
 

@@ -42,7 +42,19 @@ public class Main {
                         }
                     }
                     case 4 -> System.out.println("Update");
-                    case 5 -> System.out.println("Delete");
+                    case 5 -> {
+                        String code = InputUtil.getText("Enter code to delete");
+                        Product product = new Product();
+                        product.setCode(code);
+
+                        int result = productService.delete(product);
+                        if (result > 0) {
+                            ViewUtil.printHeader("Product deleted successfully!");
+                        } else {
+                            ViewUtil.printHeader("Product failed to deleted!");
+                        }
+
+                    }
                     default -> System.out.println("Invalid option...");
                 }
             }while (true);
